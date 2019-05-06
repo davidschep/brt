@@ -17,7 +17,7 @@ namespace brt
 	protected:
 		virtual vec3 get_bound(int b) const
 		{
-			return m_localbounds[b] + position; // TODO: refactor
+			return m_localbounds[b] + get_transformation_matrix().position(); // TODO: refactor
 		}
 
 	protected:

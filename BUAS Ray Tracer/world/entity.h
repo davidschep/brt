@@ -14,7 +14,13 @@ namespace brt
 
 		const mat4 get_transformation_matrix() const
 		{
-			return mat4::identity() * mat4::rotateX(rotation.m_X) * mat4::rotateY(rotation.m_Y) * mat4::rotateZ(rotation.m_Z) * mat4::translate(position);
+			mat4 result = mat4::identity();
+			//result *= mat4::scale(scale); // TODO: implement
+			result *= mat4::rotateX(rotation.m_X) * mat4::rotateY(rotation.m_Y) * mat4::rotateZ(rotation.m_Z);
+			result *= mat4::translate(position);
+			return result;
+
+			//return mat4::identity() * mat4::rotateX(rotation.m_X) * mat4::rotateY(rotation.m_Y) * mat4::rotateZ(rotation.m_Z) * mat4::translate(position);
 		}
 
 	public:

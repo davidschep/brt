@@ -32,7 +32,7 @@ namespace brt
 		// this way the normal can be calculated without any if statements.
 
 		vec3 c = (m_localbounds[0] + m_localbounds[1]) * 0.5f;
-		vec3 p = get_transformation_matrix().inverse_transform_vector(atpos) - position - c; // "- transform.position()" because bounds are local. transforming world position to position in objects coordinate system
+		vec3 p = get_transformation_matrix().inverse_transform_vector(atpos) - get_transformation_matrix().position() - c; // "- transform.position()" because bounds are local. transforming world position to position in objects coordinate system
 		vec3 d = (m_localbounds[0] - m_localbounds[1]) * 0.5f;
 
 		return vec3(
