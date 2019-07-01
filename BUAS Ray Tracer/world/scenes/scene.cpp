@@ -54,9 +54,12 @@ namespace brt
 #if 1
  			vec3 o = sceneobj->get_transformation_matrix().inverse_transform_vector(r.origin);
  			vec3 d = sceneobj->get_transformation_matrix().inverse_transform_direction(r.direction);
-#else
+#elif 1
 			vec3 o = (r.origin);
 			vec3 d = (r.direction);
+#else
+			vec3 o = sceneobj->get_transformation_matrix().inverse_transform_vector(sceneobj->get_transformation_matrix().inverse_transform_vector(r.origin));
+			vec3 d = sceneobj->get_transformation_matrix().inverse_transform_direction(sceneobj->get_transformation_matrix().inverse_transform_direction(r.direction));
 #endif
 			if (sceneobj->has_intersection(o, d, inter))
 			{

@@ -37,27 +37,36 @@ namespace brt
 		destroy_scene();
 	}
 
+	void scenetest::update(float deltat)
+	{
+		scene::update(deltat);
+
+		m_objects[0]->rotation += vec3(0.2f, 0.f, 0.f);
+	}
+
 	void scenetest::build_scene()
 	{
 		// camera
-		vec3 lookatpos(0.f, 2.f, -5.f);
-		vec3 campos(4.f, 3.f, 3.f);
+		vec3 lookatpos(0.f, 1.f, -1.f);
+		vec3 campos(4.f, 2.f, 5.f);
 
 		m_camera = new camera(lookatpos, campos, vec3::up(), SCREEN_WIDTH, SCREEN_HEIGHT);
 		m_raytracer->get_renderer()->set_resolution(static_cast<unsigned int>(SCREEN_WIDTH), static_cast<unsigned int>(SCREEN_HEIGHT));
 
 		// oriented bounding box
-		vec3 corner1 = vec3(-0.5f, -0.75f, -0.5f);
-		vec3 corner2 = vec3(0.5f, 0.75f, 0.5f);
-		vec3 bounds[2] = { corner1, corner2 };
-
 		color col2 = color(hslcolor(200.f, 0.7f, 0.7f));
 		std::shared_ptr<material> aabbmat2 = std::static_pointer_cast<material>(std::make_shared<materialdefault>(col2, SPECNONE));
-		m_objects.push_back(new aabb(vec3(), bounds, aabbmat2));
+		m_objects.push_back(new aabb(vec3(), aabbmat2));
 		sceneobject* obj = m_objects[m_objects.size() - 1];
 		
 		obj->rotation = vec3(M_PI / -5.f, 0.f, 0.f);
 		obj->position = vec3(1.f, 0.f, -8.f);
+		obj->scale = vec3(1.f, 2.f, 1.f);
+
+		// sphere
+		//color colorSphere(color(255.f, 0.f, 0.f));
+		//std::shared_ptr<material> sphereMat = std::static_pointer_cast<material>(std::make_shared<materialdefault>(colorSphere, SPECNONE));
+		//m_objects.push_back(new sphere(vec3(0.f, 1.f, 0.f), 1.f, sphereMat));
 
 		// plane
 		std::shared_ptr<material> planemat = std::static_pointer_cast<material>(std::make_shared<materialdefault>(color(200, 200, 200), SPECNONE));

@@ -440,6 +440,17 @@ mat4 mat4::identity()
 	return identityMat;
 }
 
+mat4 mat4::scale(const vec3 & a_Scale)
+{
+	mat4 product = mat4::identity();
+
+	product.m_00 = a_Scale.m_X;
+	product.m_11 = a_Scale.m_Y;
+	product.m_22 = a_Scale.m_Z;
+
+	return product;
+}
+
 mat4 mat4::rotateX(float a_Radians)
 {
 	mat4 product = mat4::identity();

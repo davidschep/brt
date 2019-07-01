@@ -258,6 +258,7 @@ public:
 	}
 
 	static mat4 identity();
+	static mat4 scale(const vec3& a_Scale);
 	static mat4 rotateX(float a_Radians);
 	static mat4 rotateY(float a_Radians);
 	static mat4 rotateZ(float a_Radians);

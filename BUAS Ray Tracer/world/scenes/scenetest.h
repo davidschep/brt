@@ -9,7 +9,11 @@ namespace brt
 		scenetest(raytracer* application);
 		virtual ~scenetest();
 
+		virtual void update(float deltat) override;
+
 	private:
 		void build_scene();
+
+	private:
 	};
 }

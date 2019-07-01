@@ -9,16 +9,10 @@
 
 namespace brt
 {
-	aabb::aabb(const vec3& pos, const vec3 bounds[2], std::shared_ptr<material> mat) : sceneobject(pos, mat)
+	aabb::aabb(const vec3& pos, std::shared_ptr<material> mat) : sceneobject(pos, mat)
 	{
-		m_localbounds[0] = bounds[0];
-		m_localbounds[1] = bounds[1];
-	}
-
-	aabb::aabb(const vec3& size, std::shared_ptr<material> mat) : sceneobject(vec3(), mat)
-	{
-		m_localbounds[0] = size * -1.f;
-		m_localbounds[1] = size;
+		m_localbounds[0] = vec3(-1.f, -1.f, -1.f);
+		m_localbounds[1] = vec3(1.f, 1.f, 1.f);
 	}
 
 	aabb::~aabb()

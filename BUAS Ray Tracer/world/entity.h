@@ -15,7 +15,7 @@ namespace brt
 		const mat4 get_transformation_matrix() const
 		{
 			mat4 result = mat4::identity();
-			//result *= mat4::scale(scale); // TODO: implement
+			result *= mat4::scale(scale);
 			result *= mat4::rotateX(rotation.m_X) * mat4::rotateY(rotation.m_Y) * mat4::rotateZ(rotation.m_Z);
 			result *= mat4::translate(position);
 			return result;
@@ -26,5 +26,6 @@ namespace brt
 	public:
 		vec3 position;
 		vec3 rotation; // TODO: quaternions?
+		vec3 scale;
 	};
 }

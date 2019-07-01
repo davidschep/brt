@@ -6,8 +6,7 @@ namespace brt
 	class aabb : public sceneobject
 	{
 	public:
-		aabb(const vec3& pos, const vec3 bounds[2], std::shared_ptr<material> mat);
-		aabb(const vec3& size, std::shared_ptr<material> mat);
+		aabb(const vec3& pos, std::shared_ptr<material> mat);
 		virtual ~aabb();
 
 		virtual vec3 get_normal_at(const vec3& point) const override;
@@ -17,7 +16,8 @@ namespace brt
 	protected:
 		virtual vec3 get_bound(int b) const
 		{
-			return m_localbounds[b] + get_transformation_matrix().position(); // TODO: refactor
+			//return m_localbounds[b] + position;
+			return m_localbounds[b] + get_transformation_matrix().position();
 		}
 
 	protected:
