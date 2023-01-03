@@ -19,6 +19,12 @@ namespace brt
 	}
 
 
+	void usefulFunction()
+	{
+    std::cout << "Super useful string" << std::endl;
+	}
+
+
 	raytracer::~raytracer()
 	{
 	}
@@ -76,6 +82,7 @@ namespace brt
 		delete m_renderer;
 		delete m_scenemanager;
 	}
+	
 
 	void raytracer::update(float deltat)
 	{
@@ -87,6 +94,7 @@ namespace brt
 			get_scene()->update(deltat);
 		}
 		m_renderer->update(deltat);
+		usefulFunction();
 	}
 
 	const float raytracer::get_elapsed_time() const
@@ -100,3 +108,6 @@ namespace brt
 	scene * raytracer::get_scene() const { return m_scenemanager->get_scene(); }
 	scenemanager * raytracer::get_scene_manager() { return m_scenemanager; }
 }
+
+
+
